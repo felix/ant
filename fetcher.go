@@ -192,6 +192,7 @@ func (f *Fetcher) fetch(ctx context.Context, url *URL) (*http.Response, error) {
 	}
 
 	if resp.StatusCode >= 400 {
+		fmt.Printf("status code %d for %s\n", resp.StatusCode, url.String())
 		return resp, &FetchError{
 			URL:    resp.Request.URL,
 			Status: resp.StatusCode,

@@ -273,7 +273,8 @@ func (eng *Engine) process(ctx context.Context, url *URL) error {
 
 	// Enqueue URLs.
 	if err := eng.enqueue(ctx, urls); err != nil {
-		return fmt.Errorf("ant: enqueue - %w", err)
+		fmt.Printf("ant: enqueue - %s\n", err)
+		//return fmt.Errorf("ant: enqueue - %w", err)
 	}
 
 	return nil
@@ -284,7 +285,8 @@ func (eng *Engine) scrape(ctx context.Context, url *URL) (URLs, error) {
 	page, err := eng.fetcher.Fetch(ctx, url)
 
 	if err != nil {
-		return nil, fmt.Errorf("ant: fetch %q - %w", url, err)
+		fmt.Printf("ant: fetch %q - %s\n", url, err)
+		return nil, nil
 	}
 
 	if page == nil {
